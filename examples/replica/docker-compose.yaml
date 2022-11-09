@@ -17,3 +17,5 @@ services:
     volumes:
       - ./replica-postgresql:/var/lib/postgresql
     command: standby -d "host=primary port=5432 user=postgres password=${POSTGRES_PASSWORD} target_session_attrs=read-write"
+    depends_on:
+      - primary
